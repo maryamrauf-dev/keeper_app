@@ -1,78 +1,93 @@
 # Notes Keeper
 
-![Notes Keeper preview](public/notes-keeper-preview.png)
+![Notes Keeper preview](client/public/notes-keeper-preview.png)
 
-A clean and responsive notes application inspired by the familiar note-taking experience of Google Keep. Built with React and Vite, this project focuses on a simple, modern interface for creating, editing, and organizing notes.
-
-## Overview
-
-Notes Keeper allows users to:
-
-- Create new notes with a title and content
-- Edit existing notes in-place
-- Move notes to a trash view
-- Navigate between notes and trash sections
-- Enjoy a lightweight, minimal UI optimized for daily use
+A responsive notes app with a familiar yellow notes-inspired theme. Users can create an account, organize notes, and move unwanted notes to the trash.
 
 ## Features
 
-- Modern note card layout
-- Quick note creation workflow
-- Edit and delete actions
-- Sidebar-based navigation
-- Responsive design for desktop and smaller screens
-- Fast development setup with Vite
+- Sign up and log in
+- Create and edit notes
+- Move notes to the trash, restore them, or delete them permanently
+- Navigate notes and trash from a responsive sidebar
+- Use the app on desktop, tablet, and mobile screens
 
 ## Tech Stack
 
-- React
-- Vite
-- Material UI icons
-- CSS-based styling
+- Client: React, Vite, Material UI, Axios
+- Server: Node.js, Express, Mongoose, MongoDB
 
 ## Getting Started
 
-1. Clone the repository:
+### Requirements
 
-```bash
-git clone https://github.com/your-username/keeper-app.git
-cd keeper-app
+- Node.js and npm
+- A MongoDB database
+
+### Configure the database
+
+Create a `.env` file in the repository root. The server loads this file and expects the MongoDB connection string under the variable name `MONGOO_URI`:
+
+```env
+MONGOO_URI=mongodb+srv://<username>:<password>@<cluster>/<database>?retryWrites=true&w=majority
 ```
 
-2. Install dependencies:
+The root `.env` file is ignored by Git. Keep your database credentials there and do not commit them.
+
+### Install dependencies
+
+Run these commands from the repository root:
 
 ```bash
-npm install
+npm install --prefix server
+npm install --prefix client
 ```
 
-3. Run the development server:
+### Start the app
+
+Start the backend in one terminal:
 
 ```bash
+cd server
+node server.js
+```
+
+The API listens on `http://localhost:5000`. Start the frontend in a second terminal:
+
+```bash
+cd client
 npm run dev
 ```
 
-4. Open the app in your browser at the local Vite URL displayed in the terminal.
+Open the Vite URL shown in the terminal, usually `http://localhost:5173`. The Vite development server proxies `/api` requests to the backend.
 
-## Production Build
+## Client Commands
+
+Run these from the `client` directory:
 
 ```bash
 npm run build
+npm run preview
+npm run lint
 ```
 
 ## Project Structure
 
 ```text
 keeper-app/
-├── public/
-├── src/
-├── index.html
-├── package.json
-├── vite.config.js
-├── README.md
-└── eslint.config.js
+├── client/
+│   ├── public/
+│   ├── src/
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+├── server/
+│   ├── auths/
+│   ├── controllers/
+│   ├── models/
+│   ├── package.json
+│   └── server.js
+├── .env
+└── README.md
 ```
-
-## License
-
-This project is open-source and available for personal or educational use.
 
