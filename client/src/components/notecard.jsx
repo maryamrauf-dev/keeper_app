@@ -21,8 +21,13 @@ function NoteCard({
   return (
     <Card
       sx={{
-        backgroundColor: "#a8f5df",
-        minHeight: 180,
+        backgroundColor: "#fffaf0",
+        border: "1px solid",
+        borderColor: "divider",
+        borderTop: "3px solid",
+        borderTopColor: "primary.main",
+        minHeight: 160,
+        overflowWrap: "anywhere",
       }}
     >
       <CardContent
@@ -36,7 +41,8 @@ function NoteCard({
           variant="h5"
           sx={{
             fontWeight: "bold",
-            mb: 2,
+            mb: 1.5,
+            fontSize: { xs: "1.15rem", sm: "1.3rem" },
           }}
         >
           {note.title}
@@ -50,7 +56,7 @@ function NoteCard({
           sx={{
             display: "flex",
             justifyContent: "flex-end",
-            mt: 3,
+            mt: 2,
           }}
         >
           <IconButton

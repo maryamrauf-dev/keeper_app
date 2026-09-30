@@ -17,7 +17,7 @@ function Trash({
   permanentlyDelete,
 }) {
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: { xs: 2, sm: 3, lg: 4 }, minWidth: 0 }}>
       <Typography
         variant="h4"
         sx={{
@@ -36,16 +36,19 @@ function Trash({
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: 3,
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
+            gap: { xs: 2, sm: 3 },
           }}
         >
           {trash.map((note) => (
             <Card
               key={note.id}
               sx={{
-                backgroundColor: "#eeeeee",
-                minHeight: 180,
+                backgroundColor: "background.paper",
+                border: "1px solid",
+                borderColor: "divider",
+                minHeight: 160,
+                overflowWrap: "anywhere",
               }}
             >
               <CardContent>
@@ -53,7 +56,8 @@ function Trash({
                   variant="h5"
                   sx={{
                     fontWeight: "bold",
-                    mb: 2,
+                    mb: 1.5,
+                    fontSize: { xs: "1.15rem", sm: "1.3rem" },
                   }}
                 >
                   {note.title}

@@ -21,6 +21,7 @@ function NoteForm({
       sx={{
         maxWidth: 700,
         mx: "auto",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         gap: 2,
@@ -32,14 +33,8 @@ function NoteForm({
         onChange={(e) => setTitle(e.target.value)}
         fullWidth
          sx={{
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "#a8f5df",
-      },
-    },
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "#222",
-    },
+    "& .MuiOutlinedInput-root.Mui-focused fieldset": { borderColor: "primary.main" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
   }}
       />
 
@@ -51,14 +46,8 @@ function NoteForm({
         rows={5}
         fullWidth
         sx={{
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "#a8f5df",
-      },
-    },
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "#222",
-    },
+    "& .MuiOutlinedInput-root.Mui-focused fieldset": { borderColor: "primary.main" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
   }}
       />
 
@@ -69,10 +58,11 @@ function NoteForm({
             alignSelf: "flex-end",
             width: 50,
             height: 50,
-            backgroundColor: "#42f5cb",
+            backgroundColor: "primary.main",
+            color: "primary.contrastText",
 
             "&:hover": {
-              backgroundColor: "#98ffe5",
+              backgroundColor: "primary.dark",
             },
           }}
         >
