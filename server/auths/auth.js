@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = 'super_secret_jwt_key_for_keeper_app';
 
+//middleware to verfy that can a user access this protected route
 const checkAuth = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ message: 'No token' });
