@@ -17,7 +17,11 @@ const { deleteUser } = require('./controllers/userController');
 const { getNotes, createNote, updateNote, deleteNote } = require('./controllers/noteController');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // middleware
 app.use(express.json());
@@ -49,4 +53,3 @@ app.post('/api/notes', checkAuth, createNote);
 app.put('/api/notes/:id', checkAuth, updateNote);
 app.delete('/api/notes/:id', checkAuth, deleteNote);
 
-app.listen(PORT, () => console.log('Server running on port 5000'));
