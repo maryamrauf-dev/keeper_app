@@ -2,6 +2,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { JWT_SECRET } = require('../auths/auth');
+const cookieOptions = {
+  httpOnly: true,
+  sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+  secure: process.env.NODE_ENV === 'production',
+};
 
 const signup = async (req, res) => {
   const { username, email, password } = req.body;
@@ -15,7 +20,7 @@ const signup = async (req, res) => {
   console.log('New user saved to database:', newUser.email);
 
   const token = jwt.sign({ userId: newUser._id }, JWT_SECRET);
-  res.cookie('token', token);
+  res.cookie('token', token, cookieOptions);
   res.json({ message: 'Signed up!' });
 };
 
@@ -29,13 +34,13 @@ const login = async (req, res) => {
   if (!isMatch) return res.status(400).json({ message: 'Wrong password' });
 
   const token = jwt.sign({ userId: user._id }, JWT_SECRET);
-  res.cookie('token', token);
+  res.cookie('token', token, cookieOptions);
   console.log('User logged in:', user.email);
   res.json({ message: 'Logged in!' });
 };
 
 const logout = (req, res) => {
-  res.clearCookie('token');
+  res.clearCookie('token', cookieOptions);
   console.log('User logged out');
   res.json({ message: 'Logged out' });
 };
